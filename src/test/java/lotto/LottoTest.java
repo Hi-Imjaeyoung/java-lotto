@@ -28,5 +28,19 @@ class LottoTest {
     void numbersToString(){
         assertThat(new Lotto(List.of(1,2,3,4,5,6)).toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("정답 번호가 주어졌을때, 같은 숫자 갯수를 구한다")
+    @Test
+    void sameNumberFind(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(lotto.findNumber(List.of(1,2,3,4,5,6))).isEqualTo(6);
+        assertThat(lotto.findNumber(List.of(1,2,3,4,5,7))).isEqualTo(5);
+        assertThat(lotto.findNumber(List.of(1,2,3,4,8,7))).isEqualTo(4);
+        assertThat(lotto.findNumber(List.of(1,2,3,9,8,7))).isEqualTo(3);
+    }
+    @Test
+    void bonusNumberFind(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(lotto.findBonusNumber(2)).isEqualTo(true);
+        assertThat(lotto.findBonusNumber(10)).isEqualTo(false);
+    }
 }
