@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -22,6 +23,10 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @DisplayName("로또 내 번호들을 출력한다")
+    @Test
+    void numbersToString(){
+        assertThat(new Lotto(List.of(1,2,3,4,5,6)).toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
     // 아래에 추가 테스트 작성 가능
 }
