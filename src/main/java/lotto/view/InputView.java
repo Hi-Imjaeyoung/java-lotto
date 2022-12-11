@@ -7,4 +7,12 @@ public class InputView {
         String money = Console.readLine();
         return money;
     }
+    public static String inputAnswerNumbers(){
+        String answerNumbers = Console.readLine();
+        return answerNumbers;
+    }
+    public static String inputBonusNumber(){
+        String bonusNumber = Console.readLine();
+        return bonusNumber;
+    }
 }
