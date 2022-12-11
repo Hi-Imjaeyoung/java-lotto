@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RandomNumerMaker {
+public class RandomNumberMaker {
     public List<Integer> RandomNumberMaker(){
         List<Integer> numbers = Collections.emptyList();
         while(true){
