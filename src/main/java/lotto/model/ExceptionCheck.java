@@ -1,9 +1,7 @@
 package lotto.model;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.List;
 public class ExceptionCheck {
     public static void inputMoneyFormatCheck(String input) throws IllegalArgumentException{
         if(input.replaceAll("[^0-9]","").length()!=input.length()){
@@ -31,6 +29,19 @@ public class ExceptionCheck {
     }
     private static void answerNumberOverlapCheck(String[] numbers) throws IllegalArgumentException{
         if(Arrays.stream(numbers).distinct().count() != numbers.length){
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_OVERLAP.getMessage());
+        }
+    }
+    public static void bonusNumberCheck(String input, List<Integer> numbers){
+        if(input.replaceAll("[^0-9]","").length()!=input.length()){
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_NOT_NUMBER.getMessage());
+        }
+        int bonusNumber = Integer.parseInt(input);
+        if(bonusNumber<1 || bonusNumber>45){
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_SCALE.getMessage());
+        }
+        //TODO : think better method to bonusnumber overlap check in numbers
+        if(numbers.contains(bonusNumber)){
             throw new IllegalArgumentException(ExceptionMessage.ERROR_OVERLAP.getMessage());
         }
     }
