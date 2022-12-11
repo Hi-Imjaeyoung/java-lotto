@@ -30,7 +30,8 @@ public class Lotto {
    public int findNumber(List<Integer> numbers){
         int sameNumberCount =0;
         for(int number:numbers){
-            sameNumberCount++;
+            if(this.numbers.contains(number))
+                sameNumberCount++;
         }
         return sameNumberCount;
    }
