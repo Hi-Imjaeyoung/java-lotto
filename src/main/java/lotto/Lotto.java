@@ -22,9 +22,19 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
     public String toString(){
         return numbers.toString();
     }
 
-    // TODO: 추가 기능 구현
+   public int findNumber(List<Integer> numbers){
+        int sameNumberCount =0;
+        for(int number:numbers){
+            sameNumberCount++;
+        }
+        return sameNumberCount;
+   }
+   public boolean findBonusNumber(int bonusNumber){
+        return numbers.contains(bonusNumber);
+   }
 }
