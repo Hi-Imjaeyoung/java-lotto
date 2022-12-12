@@ -5,7 +5,7 @@ public class OutputView {
         System.out.println("구입금액을 입력해 주세요.");
     }
     public static void printSuccessPurchase(int number){
-        System.out.println(number+"개를 구매했습니다");
+        System.out.println(number+"개를 구매했습니다.");
     }
     public static void printDetailNumbers(String numbers){
         System.out.println(numbers);
@@ -24,7 +24,7 @@ public class OutputView {
         resultLog.append("5개 일치 (1,500,000원) - "+rankings.charAt(2)+"개"+"\n");
         resultLog.append("5개 일치, 보너스 볼 일치 (30,000,000원) - "+rankings.charAt(1)+"개"+"\n");
         resultLog.append("6개 일치 (2,000,000,000원) - "+rankings.charAt(0)+"개"+"\n");
-        resultLog.append("총 수익률은 "+profit+"입니다.");
+        resultLog.append("총 수익률은 "+profit+"%입니다."+"\n");
         System.out.println(resultLog);
     }
 }
