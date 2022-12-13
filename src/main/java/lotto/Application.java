@@ -1,14 +1,12 @@
 package lotto;
 
+import lotto.Constant.model.*;
 import lotto.model.*;
-import lotto.Constant.ExceptionMessage;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Application { ;
     static private RandomNumberMaker randomNumberMaker =new RandomNumberMaker();

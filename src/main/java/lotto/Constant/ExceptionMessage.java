@@ -1,9 +1,5 @@
 package lotto.Constant;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
 public enum ExceptionMessage {
     ERROR_NOT_NUMBER("숫자를 입력해주세요"), ERROR_WRONG_NUMBER("1000의 배수를 입력해 주세요")
     ,ERROR_NOT_ANSWER("숫자와 , 를 이용하여 입력해주세요"), ERROR_WRONG_LENGTH("숫자 6개를 입력해주세요")

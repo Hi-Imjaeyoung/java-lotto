@@ -1,7 +1,7 @@
 package lotto.model;
 
 import lotto.Constant.Rank;
-import lotto.Lotto;
+
 import java.util.List;
 
 public class RankingCalculate {
