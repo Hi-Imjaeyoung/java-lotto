@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.model.AnswerNumbers;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,20 +24,19 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
     public String toString(){
         return numbers.toString();
     }
 
-   public int findNumber(List<Integer> numbers){
+    public int findNumber(AnswerNumbers answerNumbers){
         int sameNumberCount =0;
         for(int number:numbers){
-            if(this.numbers.contains(number))
+            if(answerNumbers.containNumber(number))
                 sameNumberCount++;
         }
         return sameNumberCount;
    }
-   public boolean findBonusNumber(int bonusNumber){
-        return numbers.contains(bonusNumber);
+   public boolean findBonusNumber(AnswerNumbers answerNumbers){
+        return numbers.contains(answerNumbers.getBonus());
    }
 }

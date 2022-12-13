@@ -1,12 +1,6 @@
-package lotto.model;
+package lotto.Constant;
 
-import java.awt.geom.NoninvertibleTransformException;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.Map;
 
 public enum Rank {
     FIRST("1",2_000_000_000), SECOND("2",30_000_000),

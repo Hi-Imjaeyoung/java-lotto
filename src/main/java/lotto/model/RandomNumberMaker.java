@@ -11,7 +11,7 @@ public class RandomNumberMaker {
         List<Integer> numbers = Collections.emptyList();
         while(true){
             numbers= Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
+            numbers = numbers.stream().sorted().collect(Collectors.toList());
             if(checkLottoNumber(numbers)){
                 break;
             }
