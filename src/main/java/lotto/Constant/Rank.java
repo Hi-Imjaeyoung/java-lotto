@@ -3,26 +3,27 @@ package lotto.Constant;
 import java.util.Arrays;
 
 public enum Rank {
-    FIRST("1",2_000_000_000), SECOND("2",30_000_000),
-    THIRD("3",1_500_00),FOURTH("4",50_000),
-    FIFTH("5",5_000), FAIL("-1",0);
+    FIRST(6,false,2_000_000_000), SECOND(5,true,30_000_000),
+    THIRD(5,true,1_500_00),FOURTH(4,false,50_000),
+    FIFTH(3,false,5_000), FAIL(0,false,0);
 
-    String ranking;
+    int correctNumber;
     int money;
-    Rank(String ranking, int money){
-        this.ranking = ranking;
+    boolean correctBonus;
+    Rank(int correctNumber,boolean correctBonus ,int money){
+        this.correctNumber = correctNumber;
         this.money = money;
+        this.correctBonus = correctBonus;
     }
-    public int getRanking(){
-        return Integer.parseInt(ranking);
-    }
+
     public int getMoney(){
         return money;
     }
 
-    public static Rank findRanking(String rank){
+    public static Rank findRanking(int correctNumber, boolean correctBonus){
         return Arrays.stream(Rank.values())
-                .filter(ranking -> ranking.ranking.equals(rank))
+                .filter(ranking -> ranking.correctNumber==correctNumber
+                        && ranking.correctBonus == correctBonus)
                 .findAny()
                 .orElse(FAIL);
     }
