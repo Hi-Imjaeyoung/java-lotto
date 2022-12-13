@@ -1,6 +1,8 @@
 package lotto.model;
 
 import lotto.Constant.LottoInformation;
+import lotto.Constant.Rank;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +29,11 @@ public class Lotto {
         return numbers.toString();
     }
 
+    public Rank compare(AnswerNumbers answerNumbers){
+        int sameNumberCount = findNumber(answerNumbers);
+        boolean isBonusSame = findBonusNumber(answerNumbers);
+        return Rank.findRanking(sameNumberCount,isBonusSame);
+    }
     public int findNumber(AnswerNumbers answerNumbers){
         int sameNumberCount =0;
         for(int number:numbers){

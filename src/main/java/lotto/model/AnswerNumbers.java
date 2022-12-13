@@ -54,7 +54,7 @@ public class AnswerNumbers {
         }
         int bonusNumber = Integer.parseInt(input);
         if(bonusNumber<LottoInformation.MINIMUM_NUMBER.getValue()
-                || bonusNumber>LottoInformation.MINIMUM_NUMBER.getValue()){
+                || bonusNumber>LottoInformation.MAXIMUM_NUMBER.getValue()){
             throw new IllegalArgumentException(ExceptionMessage.ERROR_SCALE.getMessage());
         }
         if(this.answerNumbers.contains(bonusNumber)){

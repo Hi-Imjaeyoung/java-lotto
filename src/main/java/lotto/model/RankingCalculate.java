@@ -3,43 +3,29 @@ package lotto.model;
 import lotto.Constant.LottoInformation;
 import lotto.Constant.Rank;
 
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.List;
 
 public class RankingCalculate {
-    private int[] rank;
     private int inputMoney;
+    private Map<Rank,Integer> rankings;
     public RankingCalculate(List<Lotto> lottos, AnswerNumbers answerNumbers){
-        this.rank = new int[6];
         this.inputMoney =lottos.size()* LottoInformation.PRICE.getValue();
+        rankings = new EnumMap<Rank, Integer>(Rank.class);
+        Arrays.stream(Rank.values()).forEach(rank -> rankings.put(rank,0));
         for(Lotto nowLotto:lottos){
-            int ranking = rankingCalculate(nowLotto.findNumber(answerNumbers),nowLotto.findBonusNumber(answerNumbers));
-            if(ranking<6 && ranking >0){
-                rank[ranking] ++;
-            }
+            Rank nowRank = nowLotto.compare(answerNumbers);
+            rankings.put(nowRank,rankings.getOrDefault(nowRank,0)+1);
         }
-    }
-    public int rankingCalculate(int sameNumberCount, boolean bonusNumber){
-        //TODO : 좀더 좋은 방법 없을까
-        if(sameNumberCount==6)
-            return Rank.FIRST.getRanking();
-        if(sameNumberCount==5){
-            if(bonusNumber)
-                return Rank.FIRST.getRanking();
-            return Rank.THIRD.getRanking();
-        }
-        if(sameNumberCount==4){
-            if(bonusNumber)
-                return Rank.SECOND.getRanking();
-            return Rank.FOURTH.getRanking();
-        }
-        if(sameNumberCount==3)
-            return Rank.FIFTH.getRanking();
-        return Rank.FAIL.getRanking();
     }
     public String getProfit(){
         int price =0;
-        for(int i=1 ;i<=5;i++){
-            price += rank[i]*Rank.findRanking(String.valueOf(i)).getMoney();
+        for(Map.Entry<Rank,Integer> set: rankings.entrySet()){
+            if(set.getValue()!=0){
+                price += set.getKey().getMoney()* set.getValue();
+            }
         }
         double profitPercent = ((double)price/(double)inputMoney)*(double)(100);
         String profit = String.format("%.1f",profitPercent);
@@ -47,8 +33,8 @@ public class RankingCalculate {
     }
     public String getRankings(){
         String rankings ="";
-        for(int i=1; i<=5;i++){
-            rankings += String.valueOf(rank[i]);
+        for(Map.Entry<Rank,Integer> set: this.rankings.entrySet()){
+            rankings+=(String.valueOf(set.getValue()));
         }
         return rankings;
     }
