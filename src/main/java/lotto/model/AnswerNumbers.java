@@ -30,12 +30,22 @@ public class AnswerNumbers {
     private void validateAnswerNumber(String input) throws IllegalArgumentException{
         answerNumberFormatCheck(input);
         String[] numbers = input.split(",");
+        answerNumbersRangeCheck(numbers);
         answerNumberLengthCheck(numbers);
         answerNumberOverlapCheck(numbers);
     }
     private void answerNumberFormatCheck(String input) throws IllegalArgumentException{
         if(input.replaceAll("[^0-9\\,]","").length() != input.length()){
             throw new IllegalArgumentException(ExceptionMessage.ERROR_NOT_ANSWER.getMessage());
+        }
+    }
+    private void answerNumbersRangeCheck(String[] numbers){
+        for(String number : numbers){
+            int numericValue = Integer.parseInt(number);
+            if(numericValue<LottoInformation.MINIMUM_NUMBER.getValue()
+                    || numericValue>LottoInformation.MAXIMUM_NUMBER.getValue()){
+                throw new IllegalArgumentException(ExceptionMessage.ERROR_SCALE.getMessage());
+            }
         }
     }
     private void answerNumberLengthCheck(String[] numbers) throws IllegalArgumentException{
