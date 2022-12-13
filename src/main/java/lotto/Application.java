@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.Constant.model.*;
+import lotto.Constant.LottoInformation;
 import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -28,10 +28,10 @@ public class Application { ;
     }
     private static PurchaseMoney checkInputMoney() throws IllegalArgumentException{
         PurchaseMoney purchaseMoney = new PurchaseMoney(InputView.inputMoney());
-        OutputView.printSuccessPurchase(purchaseMoney.getMoney()/1000);
+        OutputView.printSuccessPurchase(purchaseMoney.getMoney()/ LottoInformation.PRICE.getValue());
         return purchaseMoney;
     }
-    private static AnswerNumbers checkAnswerNumber(){
+    private static AnswerNumbers checkAnswerNumber() throws IllegalArgumentException{
         AnswerNumbers answerNumbers = new AnswerNumbers(InputView.inputAnswerNumbers());
         answerNumbers.addBonusNumber(InputView.inputBonusNumber());
         return answerNumbers;

@@ -1,5 +1,6 @@
 package lotto.model;
 
+import lotto.Constant.LottoInformation;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoInformation.SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
         if(numbers.size() != numbers.stream()

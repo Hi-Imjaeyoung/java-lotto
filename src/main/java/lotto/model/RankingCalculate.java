@@ -1,5 +1,6 @@
 package lotto.model;
 
+import lotto.Constant.LottoInformation;
 import lotto.Constant.Rank;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public class RankingCalculate {
     private int inputMoney;
     public RankingCalculate(List<Lotto> lottos, AnswerNumbers answerNumbers){
         this.rank = new int[6];
-        this.inputMoney =lottos.size()*1000;
+        this.inputMoney =lottos.size()* LottoInformation.PRICE.getValue();
         for(Lotto nowLotto:lottos){
             int ranking = rankingCalculate(nowLotto.findNumber(answerNumbers),nowLotto.findBonusNumber(answerNumbers));
             if(ranking<6 && ranking >0){

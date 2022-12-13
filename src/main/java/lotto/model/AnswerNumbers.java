@@ -1,6 +1,7 @@
 package lotto.model;
 
 import lotto.Constant.ExceptionMessage;
+import lotto.Constant.LottoInformation;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +39,7 @@ public class AnswerNumbers {
         }
     }
     private void answerNumberLengthCheck(String[] numbers) throws IllegalArgumentException{
-        if(numbers.length != 6){
+        if(numbers.length != LottoInformation.SIZE.getValue()){
             throw new IllegalArgumentException(ExceptionMessage.ERROR_WRONG_LENGTH.getMessage());
         }
     }
@@ -52,10 +53,10 @@ public class AnswerNumbers {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_NOT_NUMBER.getMessage());
         }
         int bonusNumber = Integer.parseInt(input);
-        if(bonusNumber<1 || bonusNumber>45){
+        if(bonusNumber<LottoInformation.MINIMUM_NUMBER.getValue()
+                || bonusNumber>LottoInformation.MINIMUM_NUMBER.getValue()){
             throw new IllegalArgumentException(ExceptionMessage.ERROR_SCALE.getMessage());
         }
-        //TODO : think better method to bonusnumber overlap check in numbers
         if(this.answerNumbers.contains(bonusNumber)){
             throw new IllegalArgumentException(ExceptionMessage.ERROR_OVERLAP.getMessage());
         }
